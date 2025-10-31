@@ -189,7 +189,19 @@
     .indicator.active { background: var(--secondary); }
 
     .project-links { display: flex; justify-content: center; gap: 15px; margin: 15px 0; flex-wrap: wrap; }
+    .project-links .button-outline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .project-links .button-outline i {
+      font-size: 1.1rem;
+    }
     .project-description { text-align: center; opacity: 0.9; line-height: 1.8; }
+    
+    .contact .buttons {
+      margin-top: 20px;
+    }
 
     /* === Contact & Footer === */
     .contact { text-align: center; }
@@ -234,9 +246,9 @@
 
   <section id="about" class="about">
     <h2>About Me</h2>
-    <p>I'm a full-stack developer from South Africa who likes building software that solves real problems. My focus is on creating intuitive, scalable solutions across web and mobile platforms.</p>
+    <p>I'm a full-stack developer from South Africa who loves building software that solves real problems. My focus is on creating intuitive, scalable solutions across web and mobile platforms.</p>
     <p>I specialize in ASP.NET MVC and Flutter, with hands-on experience leading projects from initial concept through to deployment. Whether it's managing complex farm operations, streamlining retail workflows, or digitizing automotive dealerships, I bring technical depth and creative problem-solving to every project.</p>
-    <p>When I'm not coding, I'm exploring new frameworks, new ideas, or thinking about how to make software more accessible to everyday users.</p>
+    <p>When I'm not coding, I'm exploring new frameworks, optimizing database performance, or thinking about how to make software more accessible to everyday users.</p>
   </section>
 
   <section id="projects" class="projects">
@@ -245,17 +257,21 @@
       <div class="project-card" data-project="mobi">
         <h3>🛒 Mobi Suite</h3>
         <p>A Flutter-based retail management system that transforms how small businesses handle sales and inventory.</p>
-        <a href="#" class="button-small">View Project</a>
+        <a href="#" class="button-small">
+          <i class="fab fa-google-play"></i> View Project
+        </a>
       </div>
       <div class="project-card" data-project="farmtrack">
         <h3>🌾 FarmTrack Pro</h3>
         <p>Comprehensive farm management platform with integrated e-commerce, tracking everything from soil to sale.</p>
-        <a href="#" class="button-small">View Project</a>
+        <a href="#" class="button-small">
+          <i class="fab fa-github"></i> View Project</a>
       </div>
       <div class="project-card" data-project="westend">
         <h3>🚗 Westend Motors</h3>
         <p>Full-featured automotive dealership system managing inventory, trade-ins, and customer service workflows.</p>
-        <a href="#" class="button-small">View Project</a>
+        <a href="#" class="button-small">
+          <i class="fab fa-github"></i> View Project</a>
       </div>
     </div>
 
@@ -265,7 +281,12 @@
   <section id="contact" class="contact">
     <h2>Let's Work Together</h2>
     <p>Got a project idea or collaboration in mind? Reach out!</p>
-    <a href="mailto:asanda@mobisuite.co.za" class="button">Email Me</a>
+    <div class="buttons">
+      <a href="mailto:asanda@mobisuite.co.za" class="button">Email Me</a>
+      <a href="https://www.instagram.com/asanda_khumalo16" target="_blank" rel="noopener noreferrer" class="button-outline">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
   </section>
 
   <footer>
@@ -286,7 +307,7 @@
       mobi: {
         images: ['images/mobi/mobi-1.jpg','images/mobi/mobi-2.jpg','images/mobi/mobi-3.jpg','images/mobi/mobi-4.jpg','images/mobi/mobi-5.jpg'],
         links: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.mobi.app.mobi&pcampaignid=web_share' }],
-        description: 'Mobi Suite is a mobile-first POS and retail management solution built with Flutter, Firebase, and Supabase. Designed for small to medium retailers, it combines inventory control, and sales analytics into one clean interface. Features include thermal printer integration for receipts and a scalable architecture that grows from single vendors to multi-branch operations. Built to simplify the complexity of retail tech while keeping it accessible.'
+        description: 'Mobi Suite is a mobile-first POS and retail management solution built with Flutter, Firebase, and Supabase. Designed for small to medium retailers, it combines inventory control, contactless payments, and voucher sales into one clean interface. Features include thermal printer integration for receipts and a scalable architecture that grows from single vendors to multi-branch operations. Built to simplify the complexity of retail tech while keeping it accessible.'
       },
       farmtrack: {
         images: ['images/farmtrack/farmtrack-1.png','images/farmtrack/farmtrack-2.png','images/farmtrack/farmtrack-3.png'],
@@ -327,7 +348,7 @@
           ${p.images.map((_,i)=>`<span class="indicator ${i===0?'active':''}" onclick="currentSlide(${i})"></span>`).join('')}
         </div>
         <div class="project-links">
-          ${p.links.map(l=>`<a href="${l.url}" target="_blank" class="button-outline">${l.label}</a>`).join('')}
+          ${p.links.map(l=>`<a href="${l.url}" target="_blank" class="button-outline"><i class="${l.icon}"></i> ${l.label}</a>`).join('')}
         </div>
         <p class="project-description">${p.description}</p>
       `;
