@@ -18,19 +18,11 @@
       --text:#f4f4f5;
       --muted:#a1a1aa;
       --border:rgba(255,255,255,0.08);
-      --accent:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc);
-      --cyan:#38bdf8;
-      --bg-rgb:9,9,11;
-    }
 
-    body.light{
-      --bg:#ffffff;
-      --surface:rgba(0,0,0,0.04);
-      --surface-hover:rgba(0,0,0,0.07);
-      --text:#0f172a;
-      --muted:#334155;
-      --border:rgba(0,0,0,0.08);
-      --bg-rgb:255,255,255;
+      /* NEW SUPABASE-STYLE ACCENT */
+      --accent:linear-gradient(90deg,#2dd4bf,#a3e635);
+
+      --bg-rgb:9,9,11;
     }
 
     *{
@@ -44,15 +36,32 @@
       font-family:'Inter',sans-serif;
       background:var(--bg);
       color:var(--text);
+      overflow-x:hidden;
+      line-height:1.7;
+
       background-image:
       linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
       background-size:50px 50px;
+      transition:0.3s;
+    }
+
+    /* LIGHT MODE */
+    body.light{
+      --bg:#ffffff;
+      --surface:rgba(0,0,0,0.04);
+      --surface-hover:rgba(0,0,0,0.07);
+      --text:#0f172a;
+      --muted:#334155;
+      --border:rgba(0,0,0,0.08);
+      --bg-rgb:255,255,255;
     }
 
     .gradient-text{
       background:var(--accent);
       -webkit-background-clip:text;
+      background-clip:text;
       -webkit-text-fill-color:transparent;
     }
 
@@ -62,48 +71,189 @@
       padding:120px 24px;
     }
 
-    /* NAV */
     .navbar{
       position:fixed;
-      width:100%;
       top:0;
-      backdrop-filter:blur(14px);
-      background:rgba(var(--bg-rgb),0.7);
-      border-bottom:1px solid var(--border);
+      width:100%;
       z-index:1000;
+
+      backdrop-filter:blur(14px);
+      background:rgba(var(--bg-rgb),0.75);
+
+      border-bottom:1px solid var(--border);
     }
 
     .nav-container{
+      max-width:1200px;
+      margin:auto;
+
       display:flex;
       justify-content:space-between;
       align-items:center;
+
       padding:18px 24px;
     }
 
     .nav-logo{
-      font-family:'Space Grotesk';
-      font-weight:700;
       text-decoration:none;
-      color:var(--text);
+      font-size:1.2rem;
+      font-weight:800;
+      font-family:'Space Grotesk',sans-serif;
     }
 
     .nav-links{
-      display:flex;
-      gap:25px;
       list-style:none;
+      display:flex;
+      gap:30px;
     }
 
     .nav-links a{
-      color:var(--text);
       text-decoration:none;
+      color:var(--text);
+      transition:0.3s;
+      font-size:0.95rem;
+    }
+
+    .nav-links a:hover{
+      color:#a3e635;
     }
 
     .nav-toggle{
       display:none;
+      font-size:1.8rem;
       cursor:pointer;
-      font-size:1.6rem;
     }
 
+    /* HERO */
+    .hero{
+      min-height:100vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+
+      padding:0 24px;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+
+      width:600px;
+      height:600px;
+
+      background:rgba(45,212,191,0.14);
+
+      filter:blur(140px);
+
+      top:-250px;
+      left:-200px;
+    }
+
+    .hero::after{
+      content:'';
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      background:rgba(163,230,53,0.12);
+
+      filter:blur(120px);
+
+      bottom:-220px;
+      right:-100px;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:950px;
+    }
+
+    .hero-tag{
+      color:#a3e635;
+      letter-spacing:4px;
+      font-size:0.8rem;
+      margin-bottom:24px;
+    }
+
+    .hero h1{
+      font-size:clamp(3rem,8vw,6rem);
+      line-height:1.05;
+      font-family:'Space Grotesk',sans-serif;
+      margin-bottom:24px;
+    }
+
+    .subtitle{
+      color:var(--muted);
+      font-size:1.1rem;
+      margin-bottom:30px;
+    }
+
+    .hero-status{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+
+      padding:12px 20px;
+
+      border-radius:999px;
+
+      background:rgba(255,255,255,0.04);
+
+      border:1px solid var(--border);
+
+      margin-bottom:40px;
+    }
+
+    .status-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 14px #22c55e;
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .button,
+    .button-outline{
+      padding:14px 26px;
+      border-radius:999px;
+
+      text-decoration:none;
+      font-weight:600;
+
+      transition:0.3s;
+    }
+
+    .button{
+      background:var(--accent);
+      color:#000;
+    }
+
+    .button:hover{
+      transform:translateY(-3px);
+      opacity:0.92;
+    }
+
+    .button-outline{
+      border:1px solid var(--border);
+      color:var(--text);
+      background:rgba(255,255,255,0.03);
+    }
+
+    /* NAV BUTTON (LIGHT MODE TOGGLE) */
     .theme-btn{
       background:none;
       border:1px solid var(--border);
@@ -113,72 +263,40 @@
       color:var(--text);
     }
 
-    /* HERO */
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    h2{
+      font-size:2.5rem;
       text-align:center;
-      position:relative;
+      margin-bottom:24px;
+      font-family:'Space Grotesk',sans-serif;
     }
 
-    .hero h1{
-      font-size:clamp(3rem,7vw,5.5rem);
-      font-family:'Space Grotesk';
-    }
-
-    .subtitle{
-      margin:20px 0;
+    .section-description{
+      max-width:760px;
+      margin:auto;
+      text-align:center;
       color:var(--muted);
+      margin-bottom:60px;
     }
 
-    .buttons{
-      display:flex;
-      justify-content:center;
-      gap:15px;
-      flex-wrap:wrap;
-      margin-top:30px;
-    }
-
-    .button{
-      padding:12px 22px;
-      border-radius:999px;
-      background:var(--accent);
-      color:white;
-      text-decoration:none;
-    }
-
-    .button-outline{
-      padding:12px 22px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      color:var(--text);
-      text-decoration:none;
-    }
-
-    /* PROJECTS */
     .project-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:20px;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:24px;
     }
 
     .project-card{
       background:var(--surface);
       border:1px solid var(--border);
-      padding:25px;
-      border-radius:20px;
+      padding:30px;
+      border-radius:26px;
     }
 
-    .tech span{
-      font-size:0.75rem;
-      padding:5px 10px;
-      border:1px solid var(--border);
+    .tech-stack span{
+      padding:6px 10px;
       border-radius:999px;
-      margin-right:5px;
-      display:inline-block;
-      margin-top:10px;
+      font-size:0.75rem;
+      border:1px solid var(--border);
+      margin-right:6px;
     }
 
   </style>
@@ -186,115 +304,120 @@
 
 <body>
 
-<nav class="navbar">
-  <div class="nav-container">
-    <a class="nav-logo" href="#">ASANDA.DEV</a>
+  <nav class="navbar">
+    <div class="nav-container">
 
-    <div class="nav-toggle" id="menu">☰</div>
+      <a href="#" class="nav-logo gradient-text">ASANDA.DEV</a>
 
-    <ul class="nav-links" id="links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <div class="nav-toggle" id="mobile-menu">☰</div>
 
-      <li>
-        <button class="theme-btn" id="theme">🌓</button>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
 
-<header class="hero">
-  <div>
-    <h1>
-      Building <span class="gradient-text">software systems</span>
-    </h1>
+        <!-- LIGHT MODE BUTTON -->
+        <li>
+          <button class="theme-btn" id="theme">☀️</button>
+        </li>
+      </ul>
 
-    <p class="subtitle">
-      Flutter • ASP.NET • Firebase • Supabase • Node.js
+    </div>
+  </nav>
+
+  <header id="home" class="hero">
+
+    <div class="hero-content">
+
+      <p class="hero-tag">
+        MOBILE • BACKEND • SYSTEMS • PRODUCT ENGINEERING
+      </p>
+
+      <h1>
+        Building modern
+        <span class="gradient-text">software systems</span>
+      </h1>
+
+      <p class="subtitle">
+        Flutter • ASP.NET MVC • Firebase • Supabase • Node.js • Python
+      </p>
+
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        Available for opportunities
+      </div>
+
+      <div class="buttons">
+
+        <!-- REPLACED MOBI STATUS -->
+        <a href="assets/Asanda_CV.pdf" class="button" download>
+          Download Resume
+        </a>
+
+        <a href="#projects" class="button-outline">
+          View Projects
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <section id="projects">
+
+    <h2>Featured Projects</h2>
+
+    <p class="section-description">
+      Systems I've built, contributed to and scaled across multiple domains.
     </p>
 
-    <div class="buttons">
+    <div class="project-grid">
 
-      <!-- CHANGED: CV DOWNLOAD -->
-      <a class="button" href="assets/Asanda_CV.pdf" download>
-        Download CV
-      </a>
-
-      <a class="button-outline" href="#projects">
-        View Projects
-      </a>
-
-    </div>
-  </div>
-</header>
-
-<section id="about">
-  <h2>About</h2>
-  <p>
-    I build scalable software systems across mobile, backend and web platforms
-    with focus on real-world problem solving.
-  </p>
-</section>
-
-<section id="projects">
-
-  <h2>Projects</h2>
-
-  <div class="project-grid">
-
-    <div class="project-card">
-      <h3>Mobi Suite</h3>
-      <p>Retail POS and inventory system for small businesses.</p>
-      <div class="tech">
-        <span>Flutter</span>
-        <span>Supabase</span>
+      <div class="project-card">
+        <h3>Mobi Suite</h3>
+        <p>Retail POS and inventory system for small businesses.</p>
+        <div class="tech-stack">
+          <span>Flutter</span>
+          <span>Supabase</span>
+        </div>
       </div>
-    </div>
 
-    <!-- UPDATED NAME (NO DUT) -->
-    <div class="project-card">
-      <h3>Campus / Facility Resource Finder</h3>
-      <p>
-        A scalable resource discovery system adaptable to any institution or organization.
-      </p>
-      <div class="tech">
-        <span>Flutter</span>
-        <span>Firebase</span>
+      <!-- UPDATED NAME -->
+      <div class="project-card">
+        <h3>Facility Resource Mapper</h3>
+        <p>
+          Scalable resource discovery platform adaptable to any institution or organisation.
+        </p>
+        <div class="tech-stack">
+          <span>Flutter</span>
+          <span>Firebase</span>
+        </div>
       </div>
+
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <script>
 
-<section id="contact">
-  <h2>Contact</h2>
+    // mobile menu
+    const menu = document.getElementById("mobile-menu");
+    const links = document.getElementById("nav-links");
 
-  <div class="buttons">
-    <a class="button" href="mailto:asanda@mobisuite.co.za">Email</a>
-    <a class="button-outline" href="https://github.com">GitHub</a>
-  </div>
-</section>
+    menu.onclick = () => {
+      links.classList.toggle("active");
+    };
 
-<script>
+    // LIGHT MODE TOGGLE
+    const theme = document.getElementById("theme");
 
-  // mobile menu
-  const menu = document.getElementById("menu");
-  const links = document.getElementById("links");
+    theme.onclick = () => {
+      document.body.classList.toggle("light");
+    };
 
-  menu.onclick = () => {
-    links.classList.toggle("active");
-  };
-
-  // theme toggle (LIGHT MODE ADDED)
-  const theme = document.getElementById("theme");
-
-  theme.onclick = () => {
-    document.body.classList.toggle("light");
-  };
-
-</script>
+  </script>
 
 </body>
 </html>
