@@ -3,414 +3,841 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asanda Khumalo | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <title>Asanda Khumalo | Product Engineer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
-    /* === Theme Variables === */
-    :root {
-      --bg: #0f172a;
-      --text: #e2e8f0;
-      --secondary: #38bdf8;
-      --accent: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --card-hover: rgba(255, 255, 255, 0.08);
-      --bg-rgb: 15,23,42;
+
+    :root{
+      --bg:#09090b;
+      --surface:rgba(255,255,255,0.04);
+      --surface-hover:rgba(255,255,255,0.07);
+      --text:#f4f4f5;
+      --muted:#a1a1aa;
+      --border:rgba(255,255,255,0.08);
+
+      --cyan:#38bdf8;
+      --purple:#a855f7;
+
+      --accent:linear-gradient(
+        90deg,
+        #38bdf8,
+        #818cf8,
+        #c084fc
+      );
+
+      --bg-rgb:9,9,11;
     }
 
-    body.light-mode {
-      --bg: #ffffff;
-      --text: #111111;
-      --secondary: #007bff;
-      --accent: linear-gradient(90deg, #007bff, #66b3ff, #80aaff);
-      --card-bg: rgba(0,0,0,0.05);
-      --card-hover: rgba(0,0,0,0.1);
-      --bg-rgb: 255,255,255;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
     }
 
-    /* === Global Styles === */
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-    body {
-      font-family: 'Nunito Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: background 0.5s ease, color 0.5s ease;
-      line-height: 1.6;
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      line-height:1.7;
+
+      background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+      background-size:50px 50px;
     }
 
-    /* === Navbar === */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(var(--bg-rgb), 0.8);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    .gradient-text{
+      background:var(--accent);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
 
-    .nav-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    section{
+      max-width:1200px;
+      margin:auto;
+      padding:120px 24px;
     }
 
-    .nav-logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; }
-    .gradient-text { background: var(--accent); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .nav-links { display: flex; gap: 30px; list-style: none; }
-    .nav-links li a { color: var(--text); text-decoration: none; font-weight: 600; transition: color 0.3s; }
-    .nav-links li a:hover { color: var(--secondary); }
-    .nav-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--text); }
+    .navbar{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:1000;
 
-    #theme-toggle { background: none; border: none; font-size: 1.5rem; cursor: pointer; margin-left: 10px; }
+      backdrop-filter:blur(14px);
+      background:rgba(var(--bg-rgb),0.75);
 
-    /* === Hero === */
-    .hero {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      background: radial-gradient(circle at top left, rgba(56,189,248,0.1), transparent 60%),
-                  radial-gradient(circle at bottom right, rgba(192,132,252,0.1), transparent 60%);
+      border-bottom:1px solid var(--border);
     }
 
-    .hero h1 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; margin-bottom: 15px; }
-    .subtitle { font-size: 1.1rem; opacity: 0.8; margin-bottom: 30px; }
-    .buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+    .nav-container{
+      max-width:1200px;
+      margin:auto;
 
-    .button, .button-outline {
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:18px 24px;
     }
 
-    .button { background: var(--accent); color: #fff; }
-    .button:hover { opacity: 0.85; }
-
-    .button-outline { border: 2px solid var(--secondary); color: var(--secondary); }
-    .button-outline:hover { background: var(--secondary); color: #fff; }
-
-    /* === Sections === */
-    section { max-width: 1000px; margin: 100px auto; padding: 0 20px; }
-    section h2 { font-size: 2rem; margin-bottom: 20px; font-family: 'Poppins', sans-serif; text-align: center; }
-    .about p { margin-bottom: 10px; text-align: center; }
-
-    /* === Projects === */
-    .project-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .project-card {
-      background: var(--card-bg);
-      border-radius: 15px;
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s, background 0.3s;
-      cursor: pointer;
-    }
-    .project-card:hover { transform: translateY(-5px); background: var(--card-hover); }
-    .button-small {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 16px;
-      font-size: 0.9rem;
-      border-radius: 20px;
-      background: var(--secondary);
-      color: #fff;
-      text-decoration: none;
-      transition: opacity 0.3s;
-    }
-    .button-small:hover { opacity: 0.85; }
-
-    .project-detail {
-      max-width: 900px;
-      margin: 30px auto 0;
-      background: var(--card-bg);
-      border-radius: 15px;
-      overflow: hidden;
-      transition: all 0.5s ease;
-      opacity: 0;
-      height: 0;
-      pointer-events: none;
-    }
-    .project-detail.active {
-      opacity: 1;
-      height: auto;
-      padding: 30px 20px;
-      pointer-events: auto;
+    .nav-logo{
+      text-decoration:none;
+      font-size:1.2rem;
+      font-weight:800;
+      font-family:'Space Grotesk',sans-serif;
     }
 
-    .close-detail {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(255,255,255,0.1);
-      border: none;
-      color: var(--text);
-      font-size: 1.5rem;
-      cursor: pointer;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-    }
-    .close-detail:hover { background: rgba(255,255,255,0.2); }
-
-    .slideshow-container { position: relative; max-width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
-    .slide { display: none; width: 100%; height: 300px; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; }
-    .slide.active { display: block; opacity: 1; }
-
-    .prev, .next {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      font-size: 24px; padding: 8px 12px; color: white;
-      background: rgba(0,0,0,0.4); cursor: pointer; border-radius: 5px;
-    }
-    .prev { left: 10px; } .next { right: 10px; }
-
-    .slide-indicators { text-align: center; margin-bottom: 15px; }
-    .indicator {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 50%;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .indicator.active { background: var(--secondary); }
-
-    .project-links { display: flex; justify-content: center; gap: 15px; margin: 15px 0; flex-wrap: wrap; }
-    .project-links .button-outline {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .project-links .button-outline i {
-      font-size: 1.1rem;
-    }
-    .project-description { text-align: center; opacity: 0.9; line-height: 1.8; }
-    
-    .contact .buttons {
-      margin-top: 20px;
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:30px;
     }
 
-    /* === Contact & Footer === */
-    .contact { text-align: center; }
-    footer { text-align: center; padding: 40px 0; font-size: 0.9rem; opacity: 0.7; border-top: 1px solid rgba(255,255,255,0.1); }
-
-    /* === Mobile === */
-    @media (max-width: 768px) {
-      .nav-links { display: none; position: absolute; top: 60px; right: 20px; flex-direction: column; background: rgba(var(--bg-rgb),0.95); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 15px 20px; width: 180px; }
-      .nav-links.active { display: flex; }
-      .nav-toggle { display: block; }
-      .hero h1 { font-size: 2rem; }
-      .slide { height: 220px; }
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      transition:0.3s;
+      font-size:0.95rem;
     }
+
+    .nav-links a:hover{
+      color:var(--cyan);
+    }
+
+    .nav-toggle{
+      display:none;
+      font-size:1.8rem;
+      cursor:pointer;
+    }
+
+    .hero{
+      min-height:100vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+
+      padding:0 24px;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+
+      width:600px;
+      height:600px;
+
+      background:rgba(56,189,248,0.14);
+
+      filter:blur(140px);
+
+      top:-250px;
+      left:-200px;
+    }
+
+    .hero::after{
+      content:'';
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      background:rgba(168,85,247,0.12);
+
+      filter:blur(120px);
+
+      bottom:-220px;
+      right:-100px;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:950px;
+    }
+
+    .hero-tag{
+      color:var(--cyan);
+
+      letter-spacing:4px;
+      font-size:0.8rem;
+
+      margin-bottom:24px;
+    }
+
+    .hero h1{
+      font-size:clamp(3rem,8vw,6rem);
+      line-height:1.05;
+
+      font-family:'Space Grotesk',sans-serif;
+
+      margin-bottom:24px;
+    }
+
+    .subtitle{
+      color:var(--muted);
+      font-size:1.1rem;
+
+      margin-bottom:30px;
+    }
+
+    .hero-status{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+
+      padding:12px 20px;
+
+      border-radius:999px;
+
+      background:rgba(255,255,255,0.04);
+
+      border:1px solid var(--border);
+
+      margin-bottom:40px;
+    }
+
+    .status-dot{
+      width:10px;
+      height:10px;
+
+      border-radius:50%;
+
+      background:#22c55e;
+
+      box-shadow:0 0 14px #22c55e;
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .button,
+    .button-outline{
+      padding:14px 26px;
+      border-radius:999px;
+
+      text-decoration:none;
+      font-weight:600;
+
+      transition:0.3s;
+    }
+
+    .button{
+      background:var(--accent);
+      color:white;
+    }
+
+    .button:hover{
+      transform:translateY(-3px);
+      opacity:0.92;
+    }
+
+    .button-outline{
+      border:1px solid var(--border);
+      color:var(--text);
+
+      background:rgba(255,255,255,0.03);
+    }
+
+    .button-outline:hover{
+      background:rgba(56,189,248,0.08);
+      border-color:rgba(56,189,248,0.4);
+    }
+
+    h2{
+      font-size:2.5rem;
+      text-align:center;
+
+      margin-bottom:24px;
+
+      font-family:'Space Grotesk',sans-serif;
+    }
+
+    .section-description{
+      max-width:760px;
+      margin:auto;
+
+      text-align:center;
+
+      color:var(--muted);
+
+      margin-bottom:60px;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px;
+    }
+
+    .info-card{
+      background:var(--surface);
+
+      border:1px solid var(--border);
+
+      border-radius:24px;
+
+      padding:28px;
+
+      transition:0.35s;
+    }
+
+    .info-card:hover{
+      transform:translateY(-8px);
+
+      background:var(--surface-hover);
+
+      border-color:rgba(56,189,248,0.25);
+    }
+
+    .info-card i{
+      font-size:1.6rem;
+      color:var(--cyan);
+
+      margin-bottom:16px;
+    }
+
+    .info-card h3{
+      margin-bottom:12px;
+      font-family:'Space Grotesk',sans-serif;
+    }
+
+    .info-card p{
+      color:var(--muted);
+    }
+
+    .project-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:24px;
+    }
+
+    .project-card{
+      position:relative;
+      overflow:hidden;
+
+      background:var(--surface);
+
+      border:1px solid var(--border);
+
+      border-radius:26px;
+
+      padding:30px;
+
+      transition:0.4s ease;
+
+      cursor:pointer;
+    }
+
+    .project-card::before{
+      content:'';
+
+      position:absolute;
+      inset:0;
+
+      background:
+      linear-gradient(
+        135deg,
+        rgba(56,189,248,0.14),
+        transparent 40%
+      );
+
+      opacity:0;
+
+      transition:0.4s;
+    }
+
+    .project-card:hover::before{
+      opacity:1;
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+
+      border-color:rgba(56,189,248,0.28);
+
+      box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .project-card h3{
+      font-family:'Space Grotesk',sans-serif;
+
+      font-size:1.5rem;
+
+      margin-bottom:12px;
+    }
+
+    .project-card p{
+      color:var(--muted);
+
+      margin-bottom:22px;
+    }
+
+    .tech-stack{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+
+      margin-bottom:24px;
+    }
+
+    .tech-stack span{
+      padding:8px 14px;
+
+      border-radius:999px;
+
+      font-size:0.8rem;
+
+      background:rgba(255,255,255,0.04);
+
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .button-small{
+      display:inline-block;
+
+      padding:10px 18px;
+
+      border-radius:999px;
+
+      text-decoration:none;
+
+      background:rgba(56,189,248,0.12);
+
+      border:1px solid rgba(56,189,248,0.18);
+
+      color:var(--cyan);
+
+      transition:0.3s;
+    }
+
+    .button-small:hover{
+      background:rgba(56,189,248,0.2);
+    }
+
+    .contact-box{
+      background:var(--surface);
+
+      border:1px solid var(--border);
+
+      border-radius:30px;
+
+      padding:60px 30px;
+
+      text-align:center;
+    }
+
+    .contact-box p{
+      color:var(--muted);
+
+      max-width:700px;
+      margin:auto auto 30px;
+    }
+
+    footer{
+      text-align:center;
+
+      padding:40px 24px;
+
+      color:var(--muted);
+
+      border-top:1px solid var(--border);
+    }
+
+    @media(max-width:768px){
+
+      .nav-links{
+        display:none;
+
+        position:absolute;
+        top:70px;
+        right:20px;
+
+        flex-direction:column;
+
+        width:220px;
+
+        padding:20px;
+
+        border-radius:20px;
+
+        background:rgba(10,10,12,0.96);
+
+        border:1px solid var(--border);
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .nav-toggle{
+        display:block;
+      }
+
+      .hero h1{
+        font-size:3rem;
+      }
+
+      section{
+        padding:90px 20px;
+      }
+
+    }
+
   </style>
 </head>
 <body>
 
   <nav class="navbar">
+
     <div class="nav-container">
-      <a href="#" class="nav-logo gradient-text">Asanda</a>
-      <div class="nav-toggle" id="mobile-menu">&#9776;</div>
+
+      <a href="#" class="nav-logo gradient-text">
+        ASANDA.DEV
+      </a>
+
+      <div class="nav-toggle" id="mobile-menu">
+        ☰
+      </div>
+
       <ul class="nav-links" id="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><button id="theme-toggle">☀️</button></li>
       </ul>
+
     </div>
+
   </nav>
 
   <header id="home" class="hero">
+
     <div class="hero-content">
-      <h1 class="gradient-text">Hi, I'm Asanda Khumalo</h1>
-      <p class="subtitle">Software Developer · Flutter & .NET · Building Mobi Suite & FarmTrack Pro</p>
-      <div class="buttons">
-        <a href="#projects" class="button">View My Work</a>
-        <a href="#contact" class="button-outline">Get in Touch</a>
+
+      <p class="hero-tag">
+        MOBILE • BACKEND • SYSTEMS • PRODUCT ENGINEERING
+      </p>
+
+      <h1>
+        Building modern
+        <span class="gradient-text">
+          software systems
+        </span>
+        across mobile, backend and web platforms.
+      </h1>
+
+      <p class="subtitle">
+        Flutter • ASP.NET MVC • Firebase • Supabase • Node.js • Python
+      </p>
+
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        Currently building Mobi Suite
       </div>
-    </div>
-  </header>
 
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>I'm a full-stack developer from South Africa who loves building software that solves real problems. My focus is on creating intuitive, scalable solutions across web and mobile platforms.</p>
-    <p>I specialize in ASP.NET MVC and Flutter, with hands-on experience leading projects from initial concept through to deployment. Whether it's managing complex farm operations, streamlining retail workflows, or digitizing automotive dealerships, I bring technical depth and creative problem-solving to every project.</p>
-    <p>When I'm not coding, I'm exploring new frameworks, optimizing database performance, or thinking about how to make software more accessible to everyday users.</p>
-  </section>
+      <div class="buttons">
+        <a href="#projects" class="button">
+          Explore Projects
+        </a>
 
-  <section id="projects" class="projects">
-    <h2>Featured Projects</h2>
-    <div class="project-grid">
-      <div class="project-card" data-project="mobi">
-        <h3>Mobi Suite</h3>
-        <p>A Flutter-based retail management system that transforms how small businesses handle sales and inventory.</p>
-        <a href="#" class="button-small">
-          <i class="fab fa-google-play"></i> View Project
+        <a href="#contact" class="button-outline">
+          Get In Touch
         </a>
       </div>
-      <div class="project-card" data-project="farmtrack">
-        <h3>FarmTrack Pro</h3>
-        <p>Comprehensive farm management platform with integrated e-commerce, tracking everything from soil to sale.</p>
-        <a href="#" class="button-small">
-          <i class="fab fa-github"></i> View Project</a>
-      </div>
-      <div class="project-card" data-project="westend">
-        <h3>Westend Motors</h3>
-        <p>Full-featured automotive dealership system managing inventory, trade-ins, and customer service workflows.</p>
-        <a href="#" class="button-small">
-          <i class="fab fa-github"></i> View Project</a>
-      </div>
+
     </div>
 
-    <div class="project-detail" id="project-detail"></div>
+  </header>
+
+  <section id="about">
+
+    <h2>About Me</h2>
+
+    <p class="section-description">
+      I build scalable software systems focused on real-world usability,
+      rapid execution and modern product architecture.
+    </p>
+
+    <div class="about-grid">
+
+      <div class="info-card">
+        <i class="fas fa-mobile-screen"></i>
+
+        <h3>Mobile Development</h3>
+
+        <p>
+          Building cross-platform applications using Flutter,
+          Firebase and Supabase.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <i class="fas fa-server"></i>
+
+        <h3>Backend Systems</h3>
+
+        <p>
+          Developing operational systems and scalable backend
+          platforms using ASP.NET MVC, Node.js and SQL Server.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <i class="fas fa-layer-group"></i>
+
+        <h3>Product Thinking</h3>
+
+        <p>
+          Focused on solving operational problems through software
+          across retail, agriculture and business workflows.
+        </p>
+      </div>
+
+    </div>
+
   </section>
 
-  <section id="contact" class="contact">
-    <h2>Let's Work Together</h2>
-    <p>Got a project idea or collaboration in mind? Reach out!</p>
-    <div class="buttons">
-      <a href="mailto:asanda@mobisuite.co.za" class="button">Email Me</a>
-      <a href="https://www.instagram.com/asanda_nkabinde" target="_blank" rel="noopener noreferrer" class="button-outline">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
+  <section id="projects">
+
+    <h2>Featured Projects</h2>
+
+    <p class="section-description">
+      A selection of platforms and systems I've designed,
+      developed or contributed to.
+    </p>
+
+    <div class="project-grid">
+
+      <div class="project-card">
+
+        <h3>Mobi Suite</h3>
+
+        <p>
+          Retail operating system focused on POS workflows,
+          inventory management and merchant scalability.
+        </p>
+
+        <div class="tech-stack">
+          <span>Flutter</span>
+          <span>Supabase</span>
+          <span>Firebase</span>
+          <span>POS</span>
+        </div>
+
+        <a href="#" class="button-small">
+          View Project
+        </a>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>DUT Resource Finder</h3>
+
+        <p>
+          Campus resource discovery and navigation platform
+          built for DUT students using Firebase and Flutter.
+        </p>
+
+        <div class="tech-stack">
+          <span>Flutter</span>
+          <span>Firebase</span>
+          <span>Maps</span>
+          <span>Mobile</span>
+        </div>
+
+        <a href="#" class="button-small">
+          View Project
+        </a>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>FarmTrack Pro</h3>
+
+        <p>
+          Farm management platform covering crop tracking,
+          inventory, task management and agricultural workflows.
+        </p>
+
+        <div class="tech-stack">
+          <span>ASP.NET MVC</span>
+          <span>SQL Server</span>
+          <span>Entity Framework</span>
+        </div>
+
+        <a href="#" class="button-small">
+          View Project
+        </a>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>Accounting System</h3>
+
+        <p>
+          Desktop accounting and reporting platform developed
+          with Python and Tkinter for business workflows.
+        </p>
+
+        <div class="tech-stack">
+          <span>Python</span>
+          <span>Tkinter</span>
+          <span>Desktop</span>
+        </div>
+
+        <a href="#" class="button-small">
+          View Project
+        </a>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>Westend Motors</h3>
+
+        <p>
+          Full dealership management platform handling inventory,
+          trade-ins, services and customer workflows.
+        </p>
+
+        <div class="tech-stack">
+          <span>ASP.NET MVC</span>
+          <span>Azure</span>
+          <span>SQL Server</span>
+        </div>
+
+        <a href="#" class="button-small">
+          View Project
+        </a>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>Elestia</h3>
+
+        <p>
+          Node.js based platform architecture exploring modern
+          backend systems and scalable web technologies.
+        </p>
+
+        <div class="tech-stack">
+          <span>Node.js</span>
+          <span>Backend</span>
+          <span>JavaScript</span>
+        </div>
+
+        <a href="#" class="button-small">
+          View Project
+        </a>
+
+      </div>
+
     </div>
+
+  </section>
+
+  <section id="contact">
+
+    <div class="contact-box">
+
+      <h2>Let’s Build Something</h2>
+
+      <p>
+        Interested in collaborating, building a product,
+        or discussing opportunities in software engineering,
+        product systems or startup technology?
+      </p>
+
+      <div class="buttons">
+
+        <a href="mailto:asanda@mobisuite.co.za" class="button">
+          Email Me
+        </a>
+
+        <a
+          href="https://github.com/NDOCY"
+          target="_blank"
+          class="button-outline"
+        >
+          <i class="fab fa-github"></i>
+          GitHub
+        </a>
+
+        <a
+          href="https://www.instagram.com/asanda_nkabinde"
+          target="_blank"
+          class="button-outline"
+        >
+          <i class="fab fa-instagram"></i>
+          Instagram
+        </a>
+
+      </div>
+
+    </div>
+
   </section>
 
   <footer>
-    <p>© 2026 Asanda Khumalo</p>
+    © 2026 Asanda Khumalo • Product Engineer
   </footer>
 
   <script>
-    // === Mobile Menu Toggle ===
+
     const menu = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
-    menu.addEventListener('click', () => navLinks.classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('active'));
+
+    menu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
 
-    // === Projects Data ===
-    const projects = {
-      mobi: {
-        images: ['images/mobi/mobi-1.png','images/mobi/mobi-2.png','images/mobi/mobi-3.png','images/mobi/mobi-4.png'],
-        links: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.mobi.app.mobi&pcampaignid=web_share' }],
-        description: 'Mobi Suite is a mobile-first POS and retail management solution built with Flutter, Firebase, and Supabase. Designed for small to medium retailers, it combines inventory control, contactless payments, and voucher sales into one clean interface. Features include thermal printer integration for receipts and a scalable architecture that grows from single vendors to multi-branch operations. Built to simplify the complexity of retail tech while keeping it accessible.'
-      },
-      farmtrack: {
-        images: ['images/farmtrack/farmtrack-1.png','images/farmtrack/farmtrack-2.png','images/farmtrack/farmtrack-3.png'],
-        links: [{ label: 'GitHub', url: 'https://github.com/NDOCY/FarmTrackPro' }],
-        description: 'FarmTrack Pro is a comprehensive ASP.NET MVC farm management system covering the entire agricultural workflow. It handles job applications, task scheduling, inventory tracking, livestock records, and equipment management. The platform includes an interactive plot mapping system and full crop lifecycle tracking from soil prep to harvest. Built-in e-commerce integration allows farms to sell products directly online with discount vouchers, delivery tracking, and sales analytics. Developed using Entity Framework and SQL Server with role-based access for admins, employees, drivers, and customers.'
-      },
-      westend: {
-        images: ['images/westend/westend-1.png','images/westend/westend-2.png','images/westend/westend-3.png'],
-        links: [{ label: 'GitHub', url: 'https://github.com/NDOCY/WestendMotors' }],
-        description: 'Westend Motors is a full-stack automotive dealership platform built with ASP.NET MVC and Azure Blob Storage. It manages vehicle inventory with advanced filtering, handles the complete trade-in lifecycle from request to valuation to conversion, and includes service scheduling with technician assignment. The system features role-based dashboards for admin, sales staff, and customers, with integrated appointment booking and service history tracking. Designed to streamline dealership operations from vehicle listings to post-sale maintenance.'
-      }
-    };
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-    const detail = document.getElementById('project-detail');
-    let slideIndex = 0;
-    let currentProject = null;
+      anchor.addEventListener('click', function(e){
 
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('click', (e) => {
         e.preventDefault();
-        const key = card.dataset.project;
-        showProjectDetail(key);
+
+        const target = document.querySelector(
+          this.getAttribute('href')
+        );
+
+        if(target){
+
+          window.scrollTo({
+            top: target.offsetTop - 60,
+            behavior:'smooth'
+          });
+
+          navLinks.classList.remove('active');
+        }
+
       });
+
     });
 
-    function showProjectDetail(key){
-      const p = projects[key];
-      currentProject = key;
-
-      detail.innerHTML = `
-        <button class="close-detail" onclick="closeProjectDetail()">&times;</button>
-        <div class="slideshow-container">
-          ${p.images.map((img,i)=>`<img src="${img}" class="slide ${i===0?'active':''}">`).join('')}
-          <span class="prev" onclick="plusSlides(-1)">❮</span>
-          <span class="next" onclick="plusSlides(1)">❯</span>
-        </div>
-        <div class="slide-indicators">
-          ${p.images.map((_,i)=>`<span class="indicator ${i===0?'active':''}" onclick="currentSlide(${i})"></span>`).join('')}
-        </div>
-        <div class="project-links">
-          ${p.links.map(l=>`<a href="${l.url}" target="_blank" class="button-outline"><i class="${l.icon}"></i> ${l.label}</a>`).join('')}
-        </div>
-        <p class="project-description">${p.description}</p>
-      `;
-
-      detail.classList.add('active');
-      slideIndex = 0;
-
-      detail.scrollIntoView({behavior:'smooth', block:'center'});
-    }
-
-    function closeProjectDetail(){ detail.classList.remove('active'); currentProject=null; }
-
-    function plusSlides(n){
-      if(!currentProject) return;
-      const slides=document.querySelectorAll('#project-detail .slide');
-      const indicators=document.querySelectorAll('#project-detail .indicator');
-      slides[slideIndex].classList.remove('active');
-      indicators[slideIndex].classList.remove('active');
-      slideIndex = (slideIndex+n+slides.length)%slides.length;
-      slides[slideIndex].classList.add('active');
-      indicators[slideIndex].classList.add('active');
-    }
-
-    function currentSlide(n){
-      if(!currentProject) return;
-      const slides=document.querySelectorAll('#project-detail .slide');
-      const indicators=document.querySelectorAll('#project-detail .indicator');
-      slides[slideIndex].classList.remove('active');
-      indicators[slideIndex].classList.remove('active');
-      slideIndex=n;
-      slides[slideIndex].classList.add('active');
-      indicators[slideIndex].classList.add('active');
-    }
-
-    // Keyboard navigation
-    document.addEventListener('keydown', e=>{
-      if(!currentProject) return;
-      if(e.key==='ArrowLeft') plusSlides(-1);
-      else if(e.key==='ArrowRight') plusSlides(1);
-      else if(e.key==='Escape') closeProjectDetail();
-    });
-
-    // === Theme Toggle ===
-    const toggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Load saved preference
-    if(localStorage.getItem('theme')==='light') {
-      body.classList.add('light-mode');
-      toggle.textContent='🌙';
-    }
-
-    toggle.addEventListener('click', ()=>{
-      body.classList.toggle('light-mode');
-      if(body.classList.contains('light-mode')){
-        localStorage.setItem('theme','light');
-        toggle.textContent='🌙';
-      } else {
-        localStorage.setItem('theme','dark');
-        toggle.textContent='☀️';
-      }
-    });
   </script>
+
 </body>
 </html>
