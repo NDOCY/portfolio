@@ -18,18 +18,19 @@
       --text:#f4f4f5;
       --muted:#a1a1aa;
       --border:rgba(255,255,255,0.08);
-
+      --accent:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc);
       --cyan:#38bdf8;
-      --purple:#a855f7;
-
-      --accent:linear-gradient(
-        90deg,
-        #38bdf8,
-        #818cf8,
-        #c084fc
-      );
-
       --bg-rgb:9,9,11;
+    }
+
+    body.light{
+      --bg:#ffffff;
+      --surface:rgba(0,0,0,0.04);
+      --surface-hover:rgba(0,0,0,0.07);
+      --text:#0f172a;
+      --muted:#334155;
+      --border:rgba(0,0,0,0.08);
+      --bg-rgb:255,255,255;
     }
 
     *{
@@ -43,20 +44,15 @@
       font-family:'Inter',sans-serif;
       background:var(--bg);
       color:var(--text);
-      overflow-x:hidden;
-      line-height:1.7;
-
       background-image:
       linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-
       background-size:50px 50px;
     }
 
     .gradient-text{
       background:var(--accent);
       -webkit-background-clip:text;
-      background-clip:text;
       -webkit-text-fill-color:transparent;
     }
 
@@ -66,778 +62,239 @@
       padding:120px 24px;
     }
 
+    /* NAV */
     .navbar{
       position:fixed;
-      top:0;
       width:100%;
-      z-index:1000;
-
+      top:0;
       backdrop-filter:blur(14px);
-      background:rgba(var(--bg-rgb),0.75);
-
+      background:rgba(var(--bg-rgb),0.7);
       border-bottom:1px solid var(--border);
+      z-index:1000;
     }
 
     .nav-container{
-      max-width:1200px;
-      margin:auto;
-
       display:flex;
       justify-content:space-between;
       align-items:center;
-
       padding:18px 24px;
     }
 
     .nav-logo{
+      font-family:'Space Grotesk';
+      font-weight:700;
       text-decoration:none;
-      font-size:1.2rem;
-      font-weight:800;
-      font-family:'Space Grotesk',sans-serif;
+      color:var(--text);
     }
 
     .nav-links{
-      list-style:none;
       display:flex;
-      gap:30px;
+      gap:25px;
+      list-style:none;
     }
 
     .nav-links a{
-      text-decoration:none;
       color:var(--text);
-      transition:0.3s;
-      font-size:0.95rem;
-    }
-
-    .nav-links a:hover{
-      color:var(--cyan);
+      text-decoration:none;
     }
 
     .nav-toggle{
       display:none;
-      font-size:1.8rem;
       cursor:pointer;
+      font-size:1.6rem;
     }
 
+    .theme-btn{
+      background:none;
+      border:1px solid var(--border);
+      padding:6px 10px;
+      border-radius:8px;
+      cursor:pointer;
+      color:var(--text);
+    }
+
+    /* HERO */
     .hero{
       min-height:100vh;
-
       display:flex;
-      justify-content:center;
       align-items:center;
-
+      justify-content:center;
       text-align:center;
       position:relative;
-      overflow:hidden;
-
-      padding:0 24px;
-    }
-
-    .hero::before{
-      content:'';
-      position:absolute;
-
-      width:600px;
-      height:600px;
-
-      background:rgba(56,189,248,0.14);
-
-      filter:blur(140px);
-
-      top:-250px;
-      left:-200px;
-    }
-
-    .hero::after{
-      content:'';
-      position:absolute;
-
-      width:500px;
-      height:500px;
-
-      background:rgba(168,85,247,0.12);
-
-      filter:blur(120px);
-
-      bottom:-220px;
-      right:-100px;
-    }
-
-    .hero-content{
-      position:relative;
-      z-index:2;
-      max-width:950px;
-    }
-
-    .hero-tag{
-      color:var(--cyan);
-
-      letter-spacing:4px;
-      font-size:0.8rem;
-
-      margin-bottom:24px;
     }
 
     .hero h1{
-      font-size:clamp(3rem,8vw,6rem);
-      line-height:1.05;
-
-      font-family:'Space Grotesk',sans-serif;
-
-      margin-bottom:24px;
+      font-size:clamp(3rem,7vw,5.5rem);
+      font-family:'Space Grotesk';
     }
 
     .subtitle{
+      margin:20px 0;
       color:var(--muted);
-      font-size:1.1rem;
-
-      margin-bottom:30px;
-    }
-
-    .hero-status{
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
-
-      padding:12px 20px;
-
-      border-radius:999px;
-
-      background:rgba(255,255,255,0.04);
-
-      border:1px solid var(--border);
-
-      margin-bottom:40px;
-    }
-
-    .status-dot{
-      width:10px;
-      height:10px;
-
-      border-radius:50%;
-
-      background:#22c55e;
-
-      box-shadow:0 0 14px #22c55e;
     }
 
     .buttons{
       display:flex;
       justify-content:center;
-      gap:16px;
+      gap:15px;
       flex-wrap:wrap;
-    }
-
-    .button,
-    .button-outline{
-      padding:14px 26px;
-      border-radius:999px;
-
-      text-decoration:none;
-      font-weight:600;
-
-      transition:0.3s;
+      margin-top:30px;
     }
 
     .button{
+      padding:12px 22px;
+      border-radius:999px;
       background:var(--accent);
       color:white;
-    }
-
-    .button:hover{
-      transform:translateY(-3px);
-      opacity:0.92;
+      text-decoration:none;
     }
 
     .button-outline{
+      padding:12px 22px;
+      border-radius:999px;
       border:1px solid var(--border);
       color:var(--text);
-
-      background:rgba(255,255,255,0.03);
+      text-decoration:none;
     }
 
-    .button-outline:hover{
-      background:rgba(56,189,248,0.08);
-      border-color:rgba(56,189,248,0.4);
-    }
-
-    h2{
-      font-size:2.5rem;
-      text-align:center;
-
-      margin-bottom:24px;
-
-      font-family:'Space Grotesk',sans-serif;
-    }
-
-    .section-description{
-      max-width:760px;
-      margin:auto;
-
-      text-align:center;
-
-      color:var(--muted);
-
-      margin-bottom:60px;
-    }
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:24px;
-    }
-
-    .info-card{
-      background:var(--surface);
-
-      border:1px solid var(--border);
-
-      border-radius:24px;
-
-      padding:28px;
-
-      transition:0.35s;
-    }
-
-    .info-card:hover{
-      transform:translateY(-8px);
-
-      background:var(--surface-hover);
-
-      border-color:rgba(56,189,248,0.25);
-    }
-
-    .info-card i{
-      font-size:1.6rem;
-      color:var(--cyan);
-
-      margin-bottom:16px;
-    }
-
-    .info-card h3{
-      margin-bottom:12px;
-      font-family:'Space Grotesk',sans-serif;
-    }
-
-    .info-card p{
-      color:var(--muted);
-    }
-
+    /* PROJECTS */
     .project-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:24px;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
     }
 
     .project-card{
-      position:relative;
-      overflow:hidden;
-
       background:var(--surface);
-
       border:1px solid var(--border);
-
-      border-radius:26px;
-
-      padding:30px;
-
-      transition:0.4s ease;
-
-      cursor:pointer;
+      padding:25px;
+      border-radius:20px;
     }
 
-    .project-card::before{
-      content:'';
-
-      position:absolute;
-      inset:0;
-
-      background:
-      linear-gradient(
-        135deg,
-        rgba(56,189,248,0.14),
-        transparent 40%
-      );
-
-      opacity:0;
-
-      transition:0.4s;
-    }
-
-    .project-card:hover::before{
-      opacity:1;
-    }
-
-    .project-card:hover{
-      transform:translateY(-10px);
-
-      border-color:rgba(56,189,248,0.28);
-
-      box-shadow:0 20px 40px rgba(0,0,0,0.4);
-    }
-
-    .project-card h3{
-      font-family:'Space Grotesk',sans-serif;
-
-      font-size:1.5rem;
-
-      margin-bottom:12px;
-    }
-
-    .project-card p{
-      color:var(--muted);
-
-      margin-bottom:22px;
-    }
-
-    .tech-stack{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-
-      margin-bottom:24px;
-    }
-
-    .tech-stack span{
-      padding:8px 14px;
-
+    .tech span{
+      font-size:0.75rem;
+      padding:5px 10px;
+      border:1px solid var(--border);
       border-radius:999px;
-
-      font-size:0.8rem;
-
-      background:rgba(255,255,255,0.04);
-
-      border:1px solid rgba(255,255,255,0.06);
-    }
-
-    .button-small{
+      margin-right:5px;
       display:inline-block;
-
-      padding:10px 18px;
-
-      border-radius:999px;
-
-      text-decoration:none;
-
-      background:rgba(56,189,248,0.12);
-
-      border:1px solid rgba(56,189,248,0.18);
-
-      color:var(--cyan);
-
-      transition:0.3s;
-    }
-
-    .button-small:hover{
-      background:rgba(56,189,248,0.2);
-    }
-
-    .contact-box{
-      background:var(--surface);
-
-      border:1px solid var(--border);
-
-      border-radius:30px;
-
-      padding:60px 30px;
-
-      text-align:center;
-    }
-
-    .contact-box p{
-      color:var(--muted);
-
-      max-width:700px;
-      margin:auto auto 30px;
-    }
-
-    footer{
-      text-align:center;
-
-      padding:40px 24px;
-
-      color:var(--muted);
-
-      border-top:1px solid var(--border);
-    }
-
-    @media(max-width:768px){
-
-      .nav-links{
-        display:none;
-
-        position:absolute;
-        top:70px;
-        right:20px;
-
-        flex-direction:column;
-
-        width:220px;
-
-        padding:20px;
-
-        border-radius:20px;
-
-        background:rgba(10,10,12,0.96);
-
-        border:1px solid var(--border);
-      }
-
-      .nav-links.active{
-        display:flex;
-      }
-
-      .nav-toggle{
-        display:block;
-      }
-
-      .hero h1{
-        font-size:3rem;
-      }
-
-      section{
-        padding:90px 20px;
-      }
-
+      margin-top:10px;
     }
 
   </style>
 </head>
+
 <body>
 
-  <nav class="navbar">
+<nav class="navbar">
+  <div class="nav-container">
+    <a class="nav-logo" href="#">ASANDA.DEV</a>
 
-    <div class="nav-container">
+    <div class="nav-toggle" id="menu">☰</div>
 
-      <a href="#" class="nav-logo gradient-text">
-        ASANDA.DEV
+    <ul class="nav-links" id="links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+
+      <li>
+        <button class="theme-btn" id="theme">🌓</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <h1>
+      Building <span class="gradient-text">software systems</span>
+    </h1>
+
+    <p class="subtitle">
+      Flutter • ASP.NET • Firebase • Supabase • Node.js
+    </p>
+
+    <div class="buttons">
+
+      <!-- CHANGED: CV DOWNLOAD -->
+      <a class="button" href="assets/Asanda_CV.pdf" download>
+        Download CV
       </a>
 
-      <div class="nav-toggle" id="mobile-menu">
-        ☰
-      </div>
-
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <a class="button-outline" href="#projects">
+        View Projects
+      </a>
 
     </div>
+  </div>
+</header>
 
-  </nav>
+<section id="about">
+  <h2>About</h2>
+  <p>
+    I build scalable software systems across mobile, backend and web platforms
+    with focus on real-world problem solving.
+  </p>
+</section>
 
-  <header id="home" class="hero">
+<section id="projects">
 
-    <div class="hero-content">
+  <h2>Projects</h2>
 
-      <p class="hero-tag">
-        MOBILE • BACKEND • SYSTEMS • PRODUCT ENGINEERING
-      </p>
+  <div class="project-grid">
 
-      <h1>
-        Building modern
-        <span class="gradient-text">
-          software systems
-        </span>
-        across mobile, backend and web platforms.
-      </h1>
-
-      <p class="subtitle">
-        Flutter • ASP.NET MVC • Firebase • Supabase • Node.js • Python
-      </p>
-
-      <div class="hero-status">
-        <span class="status-dot"></span>
-        Currently building Mobi Suite
+    <div class="project-card">
+      <h3>Mobi Suite</h3>
+      <p>Retail POS and inventory system for small businesses.</p>
+      <div class="tech">
+        <span>Flutter</span>
+        <span>Supabase</span>
       </div>
-
-      <div class="buttons">
-        <a href="#projects" class="button">
-          Explore Projects
-        </a>
-
-        <a href="#contact" class="button-outline">
-          Get In Touch
-        </a>
-      </div>
-
     </div>
 
-  </header>
-
-  <section id="about">
-
-    <h2>About Me</h2>
-
-    <p class="section-description">
-      I build scalable software systems focused on real-world usability,
-      rapid execution and modern product architecture.
-    </p>
-
-    <div class="about-grid">
-
-      <div class="info-card">
-        <i class="fas fa-mobile-screen"></i>
-
-        <h3>Mobile Development</h3>
-
-        <p>
-          Building cross-platform applications using Flutter,
-          Firebase and Supabase.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <i class="fas fa-server"></i>
-
-        <h3>Backend Systems</h3>
-
-        <p>
-          Developing operational systems and scalable backend
-          platforms using ASP.NET MVC, Node.js and SQL Server.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <i class="fas fa-layer-group"></i>
-
-        <h3>Product Thinking</h3>
-
-        <p>
-          Focused on solving operational problems through software
-          across retail, agriculture and business workflows.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="projects">
-
-    <h2>Featured Projects</h2>
-
-    <p class="section-description">
-      A selection of platforms and systems I've designed,
-      developed or contributed to.
-    </p>
-
-    <div class="project-grid">
-
-      <div class="project-card">
-
-        <h3>Mobi Suite</h3>
-
-        <p>
-          Retail operating system focused on POS workflows,
-          inventory management and merchant scalability.
-        </p>
-
-        <div class="tech-stack">
-          <span>Flutter</span>
-          <span>Supabase</span>
-          <span>Firebase</span>
-          <span>POS</span>
-        </div>
-
-        <a href="#" class="button-small">
-          View Project
-        </a>
-
-      </div>
-
-      <div class="project-card">
-
-        <h3>DUT Resource Finder</h3>
-
-        <p>
-          Campus resource discovery and navigation platform
-          built for DUT students using Firebase and Flutter.
-        </p>
-
-        <div class="tech-stack">
-          <span>Flutter</span>
-          <span>Firebase</span>
-          <span>Maps</span>
-          <span>Mobile</span>
-        </div>
-
-        <a href="#" class="button-small">
-          View Project
-        </a>
-
-      </div>
-
-      <div class="project-card">
-
-        <h3>FarmTrack Pro</h3>
-
-        <p>
-          Farm management platform covering crop tracking,
-          inventory, task management and agricultural workflows.
-        </p>
-
-        <div class="tech-stack">
-          <span>ASP.NET MVC</span>
-          <span>SQL Server</span>
-          <span>Entity Framework</span>
-        </div>
-
-        <a href="#" class="button-small">
-          View Project
-        </a>
-
-      </div>
-
-      <div class="project-card">
-
-        <h3>Accounting System</h3>
-
-        <p>
-          Desktop accounting and reporting platform developed
-          with Python and Tkinter for business workflows.
-        </p>
-
-        <div class="tech-stack">
-          <span>Python</span>
-          <span>Tkinter</span>
-          <span>Desktop</span>
-        </div>
-
-        <a href="#" class="button-small">
-          View Project
-        </a>
-
-      </div>
-
-      <div class="project-card">
-
-        <h3>Westend Motors</h3>
-
-        <p>
-          Full dealership management platform handling inventory,
-          trade-ins, services and customer workflows.
-        </p>
-
-        <div class="tech-stack">
-          <span>ASP.NET MVC</span>
-          <span>Azure</span>
-          <span>SQL Server</span>
-        </div>
-
-        <a href="#" class="button-small">
-          View Project
-        </a>
-
-      </div>
-
-      <div class="project-card">
-
-        <h3>Elestia</h3>
-
-        <p>
-          Node.js based platform architecture exploring modern
-          backend systems and scalable web technologies.
-        </p>
-
-        <div class="tech-stack">
-          <span>Node.js</span>
-          <span>Backend</span>
-          <span>JavaScript</span>
-        </div>
-
-        <a href="#" class="button-small">
-          View Project
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="contact">
-
-    <div class="contact-box">
-
-      <h2>Let’s Build Something</h2>
-
+    <!-- UPDATED NAME (NO DUT) -->
+    <div class="project-card">
+      <h3>Campus / Facility Resource Finder</h3>
       <p>
-        Interested in collaborating, building a product,
-        or discussing opportunities in software engineering,
-        product systems or startup technology?
+        A scalable resource discovery system adaptable to any institution or organization.
       </p>
-
-      <div class="buttons">
-
-        <a href="mailto:asanda@mobisuite.co.za" class="button">
-          Email Me
-        </a>
-
-        <a
-          href="https://github.com/NDOCY"
-          target="_blank"
-          class="button-outline"
-        >
-          <i class="fab fa-github"></i>
-          GitHub
-        </a>
-
-        <a
-          href="https://www.instagram.com/asanda_nkabinde"
-          target="_blank"
-          class="button-outline"
-        >
-          <i class="fab fa-instagram"></i>
-          Instagram
-        </a>
-
+      <div class="tech">
+        <span>Flutter</span>
+        <span>Firebase</span>
       </div>
-
     </div>
 
-  </section>
+  </div>
 
-  <footer>
-    © 2026 Asanda Khumalo • Product Engineer
-  </footer>
+</section>
 
-  <script>
+<section id="contact">
+  <h2>Contact</h2>
 
-    const menu = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
+  <div class="buttons">
+    <a class="button" href="mailto:asanda@mobisuite.co.za">Email</a>
+    <a class="button-outline" href="https://github.com">GitHub</a>
+  </div>
+</section>
 
-    menu.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
+<script>
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // mobile menu
+  const menu = document.getElementById("menu");
+  const links = document.getElementById("links");
 
-      anchor.addEventListener('click', function(e){
+  menu.onclick = () => {
+    links.classList.toggle("active");
+  };
 
-        e.preventDefault();
+  // theme toggle (LIGHT MODE ADDED)
+  const theme = document.getElementById("theme");
 
-        const target = document.querySelector(
-          this.getAttribute('href')
-        );
+  theme.onclick = () => {
+    document.body.classList.toggle("light");
+  };
 
-        if(target){
-
-          window.scrollTo({
-            top: target.offsetTop - 60,
-            behavior:'smooth'
-          });
-
-          navLinks.classList.remove('active');
-        }
-
-      });
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>
